@@ -1,0 +1,31 @@
+apiVersion: opentelemetry.io/v1alpha1
+kind: OpenTelemetryCollector
+metadata:
+  labels:
+    app.kubernetes.io/component: jaeger
+    app.kubernetes.io/instance: observatorium-xyz
+    app.kubernetes.io/name: otelcol
+    app.kubernetes.io/part-of: observatorium
+  name: observatorium-xyz-otel
+  namespace: observatorium
+spec:
+  config: |-
+    exporters: {}
+    processors:
+      routing:
+        from_attribute: "X-Tenant"
+        table: []
+    receivers:
+      otlp:
+        protocols:
+          grpc: {}
+    service:
+      pipelines:
+        traces:
+          exporters: []
+          processors:
+          - "routing"
+          receivers:
+          - "otlp"
+  image: ghcr.io/open-telemetry/opentelemetry-collector-releases/opentelemetry-collector-contrib:0.46.0
+  mode: deployment

@@ -160,7 +160,7 @@ local api = (import 'observatorium-api/observatorium-api.libsonnet');
     } + if std.objectHas(obs.loki, 'manifests') then {
       ['loki-' + name]: obs.loki.manifests[name]
       for name in std.objectFields(obs.loki.manifests)
-    } + if obs.tracing.config.enabled then {
+    } + {
       ['tracing-' + name]: obs.tracing.manifests[name]
       for name in std.objectFields(obs.tracing.manifests)
     } else {},

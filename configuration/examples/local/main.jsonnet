@@ -20,7 +20,6 @@ local dev = obs {
   tracing: tracing(
     obs.tracing.config {
       tenants: [tenant.name],
-      enabled: true,
     },
   ),
   api: api(

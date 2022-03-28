@@ -7,7 +7,6 @@ local defaults = {
   name: 'observatorium-xyz',
   namespace: error 'must provide namespace',
   tenants: [],
-  enabled: false,
   otelcolVersion: '0.46.0',
   // The core distribution does not contain routing processor, therefore using contrib distribution
   // https://github.com/orgs/open-telemetry/packages?repo_name=opentelemetry-collector-releases
